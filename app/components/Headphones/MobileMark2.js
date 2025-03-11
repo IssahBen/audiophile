@@ -10,7 +10,7 @@ export function MobileMark2() {
     }
   
     return (
-      <View className="w-full flex flex-col space-y-8 h-[600px] mt-5 smallhide largehide">
+      <View className="w-full flex flex-col space-y-8 h-[600px] mt-14 smallhide largehide">
        <ImageBackground source={mark2} className="w-full h-[352px] mb-5  bg-cover"/>
         <View className="flex flex-col w-full items-center space-y-14">
           <Text className="text-brown manropereg tracking-[10px] mb-2">NEW PRODUCT</Text>
