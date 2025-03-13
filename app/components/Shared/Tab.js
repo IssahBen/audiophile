@@ -5,7 +5,10 @@ import Speakers from '../Speakers/Speakers';
 import Home from '../Home/Home';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Cart from '../Cart/Cart';
-
+import RootStack from './Stack';
+import MARK1 from '../ProductMark1/Mark1';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function MyTabs() {
@@ -22,17 +25,17 @@ export default function MyTabs() {
             return <Icon name="home" size={size} color={color} />;
           },
         }} />
-      <Tab.Screen name="Headphones" component={Headphones} options={{
+    <Tab.Screen name="Headphones" component={HeadphonesStack} options={{
           tabBarLabel: '',
           tabBarIcon: ({ color, size }) => {
             return <Icon name="headphones" size={size} color={color} />;
-          },
+          }
         }} />
       <Tab.Screen name="Earphones" component={Earphones} options={{
           tabBarLabel: '',
           tabBarIcon: ({ color, size }) => {
             return <Icon name="earbuds" size={size} color={color} />;
-          },
+          }
         }} />
       <Tab.Screen name="Speakers" component={Speakers} options={{
           tabBarLabel: '',
@@ -46,7 +49,18 @@ export default function MyTabs() {
             return <Icon name="cart" size={size} color={color} />;
           },
         }}  />
+     
     </Tab.Navigator>
+  );
+}
+
+
+function HeadphonesStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="HeadphonesList" component={Headphones} options={{ headerShown: false }} />
+      <Stack.Screen name="Mark1" component={MARK1} options={{ headerShown: false }} />
+    </Stack.Navigator>
   );
 }
 

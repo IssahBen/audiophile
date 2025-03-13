@@ -2,7 +2,7 @@
 import MobileCategory from "../Home/MobileCategory";
 import Mobilesummary from "../Home/MobileSummary";
 import Mobilefooter from "../Home/MobileFooter";
-import Mobilezx7 from "./Mobilezx7";
+import Mobilezx7 from "./mobilezx7";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";

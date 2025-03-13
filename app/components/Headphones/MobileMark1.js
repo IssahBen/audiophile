@@ -1,12 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
-
+import MARK1 from "../ProductMark1/Mark1";
 import { View, Text, ScrollView, StyleSheet,TouchableOpacity,ImageBackground } from "react-native";
 const mark1 =require("../../../assets/Headphones/mark1.jpg")
 export function MobileMark1() {
     const navigation = useNavigation();
   
     function HandleClick() {
-      navigation.navigate("HeadphonesMark1");
+      navigation.navigate("Mark1");
     }
   
     return (
