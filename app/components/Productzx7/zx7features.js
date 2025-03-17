@@ -27,27 +27,27 @@ export default function Zx7features(){
       <View className="flex flex-col mt-10 items-start">
         <Text className="manropebh4 font-bold mb-5">IN THE BOX</Text>
 
-        <View className="flex justify-center space-x-5 mb-2">
+        <View className="flex flex-row justify-center gap-5 mb-2">
           <Text className="text-brown font-bold">2x</Text>
           <Text className="text-ash manropemed">Speaker Unit</Text>
         </View>
 
-        <View className="flex justify-center space-x-5 mb-2">
+        <View className="flex  flex-row justify-center gap-5 mb-2">
           <Text className="text-brown font-bold">2x</Text>
           <Text className="text-ash manropemed">Speaker Cloth Panel</Text>
         </View>
 
-        <View className="flex justify-center space-x-5 mb-2">
+        <View className="flex  flex-row justify-center gap-5 mb-2">
           <Text className="text-brown font-bold">1x</Text>
           <Text className="text-ash manropemed">User Manual</Text>
         </View>
 
-        <View className="flex justify-center space-x-5 mb-2">
+        <View className="flex  flex-row justify-center gap-5 mb-2">
           <Text className="text-brown font-bold">1x</Text>
           <Text className="text-ash manropemed">3.5mm 10m Audio Cable</Text>
         </View>
 
-        <View className="flex justify-center space-x-5 mb-2">
+        <View className="flex  flex-row justify-center gap-5 mb-2">
           <Text className="text-brown font-bold">1x</Text>
           <Text className="text-ash manropemed">7.5m Optical Cable</Text>
         </View>

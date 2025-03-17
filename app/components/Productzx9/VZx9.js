@@ -12,7 +12,7 @@ export default function Vzx9(){
   const navigation = useNavigation();
   return (
     <ScrollView className="relative w-screen h-screen overflow-y-auto flex flex-col">
-      <View className="w-full h-full">
+      <View className="w-full bg-white h-full">
         <View id="overlay" className="w-full h-lvh absolute z-10 hidden overflow-hidden bg-black opacity-80" />
         <TouchableOpacity
           onPress={() => {
@@ -20,7 +20,7 @@ export default function Vzx9(){
           }}
           className="mt-5 text-ash manropemed pl-4 font-bold"
         >
-          <Text>Go Back</Text>
+          <Text className="font-bold">Go Back</Text>
         </TouchableOpacity>
         <View id="body" className="w-full h-full">
           <View className="w-full flex flex-col px-5 bg-white space-y-8">

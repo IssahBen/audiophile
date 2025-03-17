@@ -35,7 +35,7 @@ export default function ZX9features() {
           { quantity: "1x", item: "3.5mm 10m Audio Cable" },
           { quantity: "1x", item: "10m Optical Cable" },
         ].map((boxItem, index) => (
-          <View key={index} className="flex flex-row justify-center space-x-5 mb-2">
+          <View key={index} className="flex flex-row justify-center gap-5 mb-2">
             <Text className="text-brown font-bold">{boxItem.quantity}</Text>
             <Text className="text-ash manropemed">{boxItem.item}</Text>
           </View>

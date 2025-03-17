@@ -36,7 +36,7 @@ export default function YX1features() {
           { quantity: "1x", item: "USB-C Charging Cable" },
           { quantity: "1x", item: "Travel Pouch" }
         ].map((boxItem, index) => (
-          <View key={index} className="flex flex-row justify-center space-x-5 mb-2">
+          <View key={index} className="flex flex-row justify-center gap-5 mb-2">
             <Text className="text-brown font-bold">{boxItem.quantity}</Text>
             <Text className="text-ash manropemed">{boxItem.item}</Text>
           </View>

@@ -11,17 +11,17 @@ export default function MobileOptionsZX9() {
 
   return (
     <View className="flex flex-col w-full space-y-10 smallhide largehide">
-      <Text className="text-center manropebh6 font-bold">YOU MAY ALSO LIKE</Text>
+      <Text className="text-center manropebh6 font-bold mb-5">YOU MAY ALSO LIKE</Text>
 
       {/* ZX7 Speaker */}
-      <View className="flex flex-col w-full items-center space-y-4">
+      <View className="flex flex-col w-full items-center gap-4">
         <Image
           source={zx7}
           className="w-full h-[120px] bg-cover rounded-xl"
         />
         <Text className="text-center font-bold manropebh6 tracking-wide">ZX7 SPEAKER</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Speakers", { screen: "ZX7" })}
+          onPress={() => navigation.navigate("Vzx7")}
           className="bg-brown tracking-widest hover:bg-hoverbrown text-white font-normal w-[160px] h-[48px] flex items-center justify-center"
         >
           <Text className="text-white">SEE PRODUCT</Text>

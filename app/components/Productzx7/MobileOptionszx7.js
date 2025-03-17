@@ -9,11 +9,11 @@ export default function MobileOptionsZX7() {
   const navigation = useNavigation();
 
   return (
-    <ScrollView className="flex flex-col w-full space-y-10 smallhide largehide">
-      <Text className="text-center manropebh6 font-bold">YOU MAY ALSO LIKE</Text>
+    <ScrollView className="flex flex-col w-full gap-10 smallhide largehide">
+      <Text className="text-center manropebh6 font-bold mb-5">YOU MAY ALSO LIKE</Text>
 
       {/* ZX9 SPEAKER */}
-      <View className="flex flex-col w-full items-center space-y-4">
+      <View className="flex flex-col w-full items-center gap-4">
         <Image
           source={zx9}
           className="w-full h-[120px] bg-cover rounded-xl"
