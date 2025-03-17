@@ -6,7 +6,7 @@ export function MobileMark2() {
     const navigation = useNavigation();
   
     function HandleClick() {
-      navigation.navigate("HeadphonesMark2");
+      navigation.navigate("Mark2");
     }
   
     return (
@@ -20,7 +20,7 @@ export function MobileMark2() {
             redefines your premium headphone experience by reproducing the
             balanced depth and precision of studio-quality sound.
           </Text>
-          <TouchableOpacity onPress={HandleClick} className="bg-brown hover:bg-hoverbrown text-white font-normal py-4 px-10">
+          <TouchableOpacity onPress={HandleClick} className="bg-brown hover:bg-hoverbrown text-white font-normal py-4 px-10 mt-5">
             <Text>SEE PRODUCT</Text>
           </TouchableOpacity>
         </View>

@@ -6,8 +6,13 @@ import Home from '../Home/Home';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Cart from '../Cart/Cart';
 import RootStack from './Stack';
+import Vxx59 from '../Productxx59/Vxx59';
 import MARK1 from '../ProductMark1/Mark1';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Vzx7 from '../Productzx7/VZX7';
+import Mark2 from '../ProductMark2/Mark2';
+import Vzx9 from '../Productzx9/VZx9';
+import Vyx1 from '../Productyx1/Vyx1';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -31,13 +36,13 @@ export default function MyTabs() {
             return <Icon name="headphones" size={size} color={color} />;
           }
         }} />
-      <Tab.Screen name="Earphones" component={Earphones} options={{
+      <Tab.Screen name="Earphones" component={EarphonesStack} options={{
           tabBarLabel: '',
           tabBarIcon: ({ color, size }) => {
             return <Icon name="earbuds" size={size} color={color} />;
           }
         }} />
-      <Tab.Screen name="Speakers" component={Speakers} options={{
+      <Tab.Screen name="Speakers" component={SpeakersStack} options={{
           tabBarLabel: '',
           tabBarIcon: ({ color, size }) => {
             return <Icon name="speaker" size={size} color={color} />;
@@ -60,6 +65,28 @@ function HeadphonesStack() {
     <Stack.Navigator>
       <Stack.Screen name="HeadphonesList" component={Headphones} options={{ headerShown: false }} />
       <Stack.Screen name="Mark1" component={MARK1} options={{ headerShown: false }} />
+      <Stack.Screen name="Mark2" component={Mark2} options={{ headerShown: false }} />
+      <Stack.Screen name="Vxx59" component={Vxx59} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  );
+}
+function SpeakersStack(){
+  return (
+    <Stack.Navigator>
+       <Stack.Screen name="Speakerslist" component={Speakers} options= {{ headerShown: false }}/>
+      <Stack.Screen name="Vzx7"  component={Vzx7}   options={{ headerShown: false }}/>
+      <Stack.Screen name="Vzx9" component={Vzx9}  options={{ headerShown: false }}/>
+
+    </Stack.Navigator>
+  );
+}
+function EarphonesStack(){
+  return (
+    <Stack.Navigator>
+       <Stack.Screen name="EarphonesList"  component={Earphones}  options= {{ headerShown: false }}/>
+      <Stack.Screen name="Vyx1" component={Vyx1} options={{ headerShown: false }}/>
+     
+
     </Stack.Navigator>
   );
 }

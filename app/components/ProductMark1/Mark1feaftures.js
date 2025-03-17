@@ -1,5 +1,7 @@
-import { View, Text } from 'react-native';
-
+import { View, Text, Image } from 'react-native';
+const mark1g1 =require("../../../assets/Headphones/mark1g1.jpg")
+const mark1g2 =require("../../../assets/Headphones/mark1g2.jpg")
+const mark1g3 =require("../../../assets/Headphones/mark1g3.jpg")
 export default function Mark1features() {
   return (
     <View className="w-full flex flex-col smallhide largehide">
@@ -38,10 +40,10 @@ export default function Mark1features() {
           <Text className="text-ash manropemed">3.5mm 5m Audio Cable</Text>
         </View>
       </View>
-      <View className="flex flex-col space-y-2 mt-10">
-        <View className="w-full h-[174px] mobilevmark1i1 bg-cover rounded-xl" />
-        <View className="w-full h-[174px] mobilevmark1i2 bg-cover rounded-xl" />
-        <View className="w-full h-[368px] mobilevmark1i3 bg-cover rounded-xl" />
+      <View className="flex gap-4 spac mt-10 mb-10">
+        <Image source={mark1g1} className="w-full h-[174px] mobilevmark1i1 bg-cover rounded-xl" />
+        <Image source={mark1g2} className="w-full h-[174px] mobilevmark1i2 bg-cover rounded-xl" />
+        <Image source={mark1g3} className="w-full h-[368px] mobilevmark1i3 bg-cover rounded-xl" />
       </View>
     </View>
   );

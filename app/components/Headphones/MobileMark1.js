@@ -19,7 +19,7 @@ export function MobileMark1() {
             detailed and accurate audio reproduction for audiophiles, mixing
             engineers, and music aficionados alike in studios and on the go.
           </Text>
-          <TouchableOpacity onPress={HandleClick} className="bg-brown hover:bg-hoverbrown text-white font-normal py-4 px-10">
+          <TouchableOpacity onPress={HandleClick} className="bg-brown hover:bg-hoverbrown text-white font-normal py-4 px-10 mt-5">
             <Text>SEE PRODUCT</Text>
           </TouchableOpacity>
         </View>

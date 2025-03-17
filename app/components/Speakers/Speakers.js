@@ -18,7 +18,7 @@ export default function Speakers() {
           <View className="w-full h-24 mb-10 flex justify-center items-center bg-black  manropebh4 font-semibold tracking-widest">
             <Text className="text-white text-lg font-bold">Speakers</Text>
           </View>
-          <View className="w-full flex flex-col px-5 bg-white space-y-5 pt-10">
+          <View className="w-full flex flex-col px-5 bg-white space-y-5 ">
             
             <Mobilezx7/>
             <Mobilezx9/>

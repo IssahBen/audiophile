@@ -1,33 +1,32 @@
 import { View, Text, TouchableOpacity,ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import MobileVMark1 from './MobileVMark1';
-import Mark1features from './Mark1feaftures';
-import MobileOptionsMark1 from './MobileOptionsMark1';
 import MobileCategory from '../Home/MobileCategory';
 import Mobilesummary from '../Home/MobileSummary';
 import Mobilefooter from '../Home/MobileFooter';
+import YX1features from './Yx1features';
+import MobileVYX1 from './Mobilevyx1';
 
-export default function MARK1() {
+export default function Vyx1(){
   const navigation = useNavigation();
   return (
     <ScrollView className="relative w-screen h-screen overflow-y-auto flex flex-col">
       <View className="w-full h-full">
-        <View id="overlay" className="w-full h-lvh absolute z-10 hidden overflow-hidden bg-black opacity-80 " />
+        <View id="overlay" className="w-full h-lvh absolute z-10 hidden overflow-hidden bg-black opacity-80" />
         <TouchableOpacity
           onPress={() => {
             navigation.goBack();
           }}
-          className="mt-5  text-ash manropemed pl-4 font-bold "
+          className="mt-5 text-ash manropemed pl-4 font-bold"
         >
-          <Text className="mb-5">Go Back</Text>
+          <Text>Go Back</Text>
         </TouchableOpacity>
         <View id="body" className="w-full h-full">
           <View className="w-full flex flex-col px-5 bg-white space-y-8">
-            <MobileVMark1 />
+           <MobileVYX1/>
            
-            <Mark1features />
+            <YX1features/>
             
-            <MobileOptionsMark1 />
+            
           
             <View className="w-full ">
               <MobileCategory />

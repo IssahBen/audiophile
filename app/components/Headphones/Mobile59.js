@@ -6,11 +6,11 @@ export function Mobile59() {
     const navigation = useNavigation();
   
     function HandleClick() {
-      navigation.navigate("HeadphonesXX59");
+      navigation.navigate("Vxx59")
     }
   
     return (
-      <View className="w-full flex flex-col space-y-8 h-[550px]">
+      <View className="w-full flex flex-col space-y-8 h-[570px]">
         <ImageBackground source={mark59} className="w-full h-[352px]  bg-cover mb-5"/>
         
         <View className="flex flex-col w-full items-center space-y-4">
@@ -23,7 +23,7 @@ export function Mobile59() {
             tastes with the XX59 headphones. The stylish yet durable versatile
             wireless headset is a brilliant companion at home or on the move.
           </Text>
-          <TouchableOpacity onPress={HandleClick} className="bg-brown hover:bg-hoverbrown text-white font-normal py-4 px-10">
+          <TouchableOpacity onPress={HandleClick} className="bg-brown hover:bg-hoverbrown text-white font-normal py-4 px-10 mt-2">
             <Text>SEE PRODUCT</Text>
           </TouchableOpacity>
         </View>

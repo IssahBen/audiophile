@@ -1,14 +1,14 @@
-import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput,ImageBackground} from 'react-native';
 import { useState } from 'react';
 
-
+const mark1 =require("../../../assets/Productimages/mark1p.jpg")
 export default function MobileVMark1() {
   const [mark1s, setMark1s] = useState(0);
   
 
   return (
     <View className="w-full flex flex-col space-y-8 h-[724px] mt-5 smallhide largehide">
-      <View className="w-full h-[352px] mobilevmark1 bg-cover" />
+      <ImageBackground source={mark1} className="w-full h-[352px] mobilevmark1 bg-cover" />
       <View className="flex flex-col w-full items-start space-y-4">
         <Text className="text-brown manropereg tracking-[10px]">NEW PRODUCT</Text>
         <Text className="tracking-wide manropebh4 font-bold">XX99 MARK I HEADPHONES</Text>

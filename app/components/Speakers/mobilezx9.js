@@ -4,7 +4,7 @@ const zx9 =require("../../../assets/Speakers/zx9.jpg")
 export default function Mobilezx9() {
   const navigation = useNavigation();
   function HandleClick() {
-    navigation.navigate("/speakers/zx9");
+    navigation.navigate("Vzx9")
   }
   return (
     <View className="w-full flex flex-col space-y-8 h-[600px]  ">
@@ -21,7 +21,7 @@ export default function Mobilezx9() {
           connectivity—creating new possibilities for more pleasing and practical
           audio setups.
         </Text>
-        <TouchableOpacity onPress={HandleClick} className="bg-brown hover:bg-hoverbrown text-white font-normal py-4 px-10">
+        <TouchableOpacity onPress={HandleClick} className="bg-brown hover:bg-hoverbrown text-white font-normal py-4 px-10 mt-5">
           <Text>SEE PRODUCT</Text>
         </TouchableOpacity>
       </View>

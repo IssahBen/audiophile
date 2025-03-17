@@ -4,7 +4,8 @@ import {useNavigation } from '@react-navigation/native'
 const  headphonepic=require("../../../assets/Home/headphone.png")
 const earphonepic  = require("../../../assets/Home/earphone.png")
 const speakerpic = require("../../../assets/Home/speaker.png")
-export default function MobileCategory({navigation}) {
+export default function MobileCategory() {
+  const navigation =useNavigation()
   return (
     <View className=" w-full  flex  bg-white gap-y-24 pt-24 px-10 ">
       <Headphones navigation={navigation}/>
