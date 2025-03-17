@@ -1,76 +1,79 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 
-const xx59 =require("../../../assets/Productimages/xx59p.jpg")
-export default function MobileVXX59() {
-  const [xx59s, setxx59s] = useState(0);
+const xx59 = require("../../../assets/Productimages/xx59p.jpg");
 
+export default function MobileVXX59() {
+  const [xx59s, setXx59s] = useState(0);
+
+  const handleDecrease = () => {
+    if (xx59s > 0) setXx59s(xx59s - 1);
+  };
+
+  const handleIncrease = () => {
+    setXx59s(xx59s + 1);
+  };
 
   return (
-    <View className="w-full flex flex-col space-y-8 h-[724px] mt-5 smallhide largehide">
-      <Image
-        source={xx59} // replace with actual image URL
-        className="w-full h-[352px] mobilevxx59 bg-cover"
+    <View className="w-full flex flex-col space-y-6 h-auto mt-5 mb-5">
+      {/* Product Image */}
+      <Image 
+        source={xx59} 
+        className="w-full h-[352px] rounded-lg overflow-hidden bg-cover mb-5"
       />
-      
-      <View className="flex flex-col w-full items-start space-y-4">
-        <Text className="text-brown manropereg tracking-[10px]">NEW PRODUCT</Text>
-        
-        <View className="flex flex-col">
-          <Text className="tracking-wide manropebh4 font-bold">XX59</Text>
-          <Text className="tracking-wide manropebh4 font-bold">HEADPHONES</Text>
-        </View>
-        
-        <Text className="text-ash manropemed leading-6">
-          Enjoy your audio almost anywhere and customize it to your specific
-          tastes with the XX59 headphones. The stylish yet durable versatile
+
+      {/* Product Info */}
+      <View className="flex flex-col w-full items-start ">
+        <Text className="text-brown text-sm font-medium tracking-[4px] uppercase">New Product</Text>
+
+        <Text className="text-xl font-bold tracking-wide leading-tight mt-2">
+          XX59 
+        </Text>
+        <Text className="text-xl font-bold tracking-wide leading-tight mt-2">
+           HEADPHONES
+        </Text>
+
+        <Text className="text-gray-600 text-base leading-6 mt-2">
+          Enjoy your audio almost anywhere and customize it to your specific 
+          tastes with the XX59 headphones. The stylish yet durable versatile 
           wireless headset is a brilliant companion at home or on the move.
         </Text>
-        
-        <Text className="manropebh5 font-bold">$899</Text>
-        
-        <View className="flex h-[48px] w-[296px] space-x-2">
-          <View className="flex w-[120px] bg-ashwhite items-center px-5">
-            <TouchableOpacity
-              onPress={() => {
-                if (xx59s > 0) {
-                  setxx59s(xx59s - 1);
-                } else {
-                  setxx59s(xx59s);
-                }
-              }}
-              className="font-bold"
+
+        <Text className="text-lg font-bold mt-2">$899</Text>
+
+        {/* Quantity Selector & Add to Cart */}
+        <View className="flex flex-row items-center mt-6 gap-4">
+          {/* Counter */}
+          <View className="flex flex-row items-center justify-between  bg-gray-200 px-4  ">
+            <TouchableOpacity 
+              onPress={handleDecrease}
+              className="px-2"
+              aria-label="Decrease quantity"
             >
-              <Text>-</Text>
+              <Text className="text-lg font-bold">-</Text>
             </TouchableOpacity>
 
             <TextInput
-              value={xx59s.toString()}
+              value={String(xx59s)}
               editable={false}
-              className="w-full h-[32px] text-black bg-ashwhite text-center font-bold"
+              className="w-8 text-center text-lg font-bold text-black"
             />
-            
-            <TouchableOpacity
-              onPress={() => {
-                if (xx59s >= 0) {
-                  setxx59s(xx59s + 1);
-                } else {
-                  setxx59s(xx59s);
-                }
-              }}
-              className="font-bold"
+
+            <TouchableOpacity 
+              onPress={handleIncrease}
+              className="px-2"
+              aria-label="Increase quantity"
             >
-              <Text>+</Text>
+              <Text className="text-lg font-bold">+</Text>
             </TouchableOpacity>
           </View>
-          
-          <TouchableOpacity
-            onPress={() => {
-              setNumberOfxx59(xx59s);
-            }}
-            className="bg-brown hover:bg-hoverbrown text-white font-normal py-4 px-4"
+
+          {/* Add to Cart Button */}
+          <TouchableOpacity 
+            onPress={() => console.log(`Added ${xx59s} items to cart`)}
+            className="bg-brown hover:bg-hoverbrown text-white font-medium py-4 px-6 "
           >
-            <Text className="text-center text-white">ADD TO CART</Text>
+            <Text className="text-white font-semibold">ADD TO CART</Text>
           </TouchableOpacity>
         </View>
       </View>
