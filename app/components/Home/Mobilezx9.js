@@ -1,10 +1,13 @@
 import { Image, ImageBackground, Pressable, Text, View } from "react-native";
-
+import { useNavigation } from "@react-navigation/native";
 const  zx9 = require("../../../assets/Home/zx9.png")
 const circles = require("../../../assets/Home/pattern-circles.jpg")
 export default function Mobilezx9() {
   
-  
+  const navigation = useNavigation()
+    function HandleClick() {
+      navigation.navigate("Vzx9");
+    }
   return (
     <View className="w-full px-10 bg-white pt-[120px]">
         <View className="w-full h-full  flex-1  gap-y-4 circles items-center  bg-amber-700 py-8  rounded-xl">
@@ -18,7 +21,7 @@ export default function Mobilezx9() {
         truly remarkable sound
       </Text>
       <Pressable
-       
+        onPress={HandleClick}
         className="bg-black   py-4 px-10 "
       >
        <Text className='text-white font-normal'> SEE PRODUCT</Text> 

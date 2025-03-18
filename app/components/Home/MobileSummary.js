@@ -2,7 +2,7 @@ import { View, Text, ImageBackground } from "react-native";
 const gear = require("../../../assets/Home/gear.jpg")
 export default function Mobilesummary() {
     return (
-     <View className="bg-white px-10 pt-20"> <View className="w-full flex flex-col  bg-white mb-24  py-2">
+     <View className="bg-white  px-10 pt-20"> <View className="w-full flex flex-col  bg-white mb-24  py-2">
      <ImageBackground source={gear} resizeMode="cover" className="w-full h-[300px]  rounded-xl"></ImageBackground>
      <View className="flex  items-center gap-y-7 mt-10  px-2">
        <Text className="text-center text-3xl tracking-[2px] font-bold w-[300px]">

@@ -1,6 +1,11 @@
 import { ImageBackground, Pressable, Text, View } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 const header = require("../../../assets/Home/image-header.jpg")
 export default function MobileHero(){
+  const navigation = useNavigation()
+  function HandleClick() {
+    navigation.navigate("Mark2");
+  }
     return(
         <ImageBackground source={header} resizeMode="cover"  className="  flex justify-center items-center w-full h-[600px] ">
         <View className="flex  gap-y-5  items-center w-2/3 h-80 ">
@@ -15,7 +20,7 @@ export default function MobileHero(){
           for the passionate music enthusiast
         </Text>
         <Pressable
-         
+          onPress={HandleClick}
           className="bg-amber-700 hover:bg-hoverbrown  font-normal py-4 px-10 "
         >
          <Text className="text-white"> SEE PRODUCT</Text>
