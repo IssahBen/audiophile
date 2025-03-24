@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
-
+import { useData } from "../Context/DataContext";
 const zx9 = require("../../../assets/Productimages/zx9p.jpg");
 
 export default function MobileVZX9() {
   const [zx9s, setZx9s] = useState(0);
-
+  const { setNumberOfZx9 } = useData();
   const handleDecrease = () => {
     if (zx9s > 0) setZx9s(zx9s - 1);
   };
@@ -64,7 +64,9 @@ export default function MobileVZX9() {
         
                   {/* Add to Cart Button */}
                   <TouchableOpacity 
-                    onPress={() => console.log(`Added ${zx9s} items to cart`)}
+                    onPress={() => {
+                      setNumberOfZx9(zx9s);
+                    }}
                     className="bg-brown hover:bg-hoverbrown text-white font-medium py-4 px-6 "
                   >
                     <Text className="text-white font-semibold">ADD TO CART</Text>

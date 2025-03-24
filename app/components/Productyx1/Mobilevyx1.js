@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
-
+import { useData } from "../Context/DataContext";
 const yx1 = require("../../../assets/Productimages/yx1p.jpg");
 
 export default function MobileVYX1() {
   const [yx1s, setYx1s] = useState(0);
-
+  const { setNumberOfYx1 } = useData();
   const handleDecrease = () => {
     if (yx1s > 0) setYx1s(yx1s - 1);
   };
@@ -66,7 +66,9 @@ export default function MobileVYX1() {
 
           {/* Add to Cart Button */}
           <TouchableOpacity 
-            onPress={() => console.log(`Added ${yx1s} items to cart`)}
+            onPress={() => {
+              setNumberOfYx1(yx1s);
+            }}
             className="bg-brown hover:bg-hoverbrown text-white font-medium py-4 px-6 "
           >
             <Text className="text-white font-semibold">ADD TO CART</Text>

@@ -1,11 +1,12 @@
 
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, ImageBackground } from "react-native";
-
+import { useData } from "../Context/DataContext";
 const mark2 = require("../../../assets/Productimages/mark2p.jpg");
 
 export default function MobileVMark2() {
   const [mark2s, setMark2s] = useState(0);
+  const {setNumberOfMark2} = useData()
 
   const handleDecrease = () => {
     if (mark2s > 0) setMark2s(mark2s - 1);
@@ -50,7 +51,9 @@ export default function MobileVMark2() {
           </View>
 
           <TouchableOpacity 
-            onPress={() => console.log("Added to cart:", mark2s)}
+             onPress={() => {
+              setNumberOfMark2(mark2s);
+            }}
             activeOpacity={0.8}
             className="bg-brown hover:bg-hoverbrown text-white px-6 py-4 "
           >

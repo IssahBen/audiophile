@@ -91,6 +91,8 @@ function HomeStack(){
       <Stack.Screen name="Vzx9" component={Vzx9}  options={{ headerShown: false }}/>
       <Stack.Screen name="Vyx1" component={Vyx1} options={{ headerShown: false }}/>
       <Stack.Screen name="Mark2" component={Mark2} options={{ headerShown: false }} />
+      <Stack.Screen name="Mark1" component={MARK1} options={{ headerShown: false }} />
+      <Stack.Screen name="Vxx59" component={Vxx59} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
