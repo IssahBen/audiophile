@@ -5,10 +5,10 @@ import Invoice from "./Invoice";
 
 export default function MobileCheckout() {
   return (
-    <View className="w-full bg-white flex flex-col space-y-5 smallhide largehide px-4 py-4 mx-auto">
-      <View className="w-full h-[1200px]  flex-col gap-10 bg-white">
-        <View className="w-full  flex flex-col bg-white px-5 pt-8 space-y-10">
-          <Text className="font-bold manropebh4">Checkout</Text>
+    <View className="w-full bg-white flex flex-col gap-5  px-4 py-4 mx-auto">
+      <View className="w-full h-[1750px]  flex-col gap-10 bg-white">
+        <View className="w-full  flex flex-col bg-white px-5 pt-8 gap-10">
+          <Text className="font-bold text-2xl manropebh4">Checkout</Text>
           <BillingDetails />
           <ShippingInfo />
           <PaymentDetails />
@@ -23,7 +23,7 @@ export default function MobileCheckout() {
 
 function BillingDetails() {
   return (
-    <View className="flex flex-col w-full space-y-4">
+    <View className="flex flex-col w-full gap-4">
       <Text className="manropebh6 font-medium text-brown">BILLING DETAILS</Text>
       <FormInput label="Name" placeholder="John Doe" />
       <FormInput label="Phone Number" placeholder="+(1)431-323-3580" />
@@ -34,7 +34,7 @@ function BillingDetails() {
 
 function ShippingInfo() {
   return (
-    <View className="flex flex-col w-full space-y-4">
+    <View className="flex flex-col w-full gap-4">
       <Text className="manropebh6 font-medium text-brown">SHIPPING INFO</Text>
       <FormInput label="Your Address" />
       <FormInput label="Zip Code" />
@@ -46,17 +46,17 @@ function ShippingInfo() {
 
 function PaymentDetails() {
   return (
-    <View className="flex flex-col w-full space-y-4">
+    <View className="flex flex-col w-full gap-2">
       <Text className="manropebh6 font-medium text-brown">PAYMENT DETAILS</Text>
       <FormInput label="Name on Card" placeholder="John Doe" />
       <FormInput label="Card Number" placeholder="xxxx-xxxx-xxxx-xxxx" />
 
-      <View className="flex w-full justify-center font-bold h-[50px]">
-        <View className="w-1/2 flex flex-col justify-center space-y-2">
+      <View className="flex flex-row w-full justify-center font-bold h-[50px] mt-10">
+        <View className="w-1/2 flex flex-col justify-center gap-2">
           <Text className="text-black">Cvv</Text>
-          <TextInput className="w-[80px] h-[80px] border-2 rounded-lg pl-2" />
+          <TextInput className="w-[80px] h-[40px] border-2 rounded-lg pl-2" />
         </View>
-        <View className="flex flex-col w-1/2 space-y-2">
+        <View className="flex flex-col w-1/2 gap-2 ">
           <Text className="text-black">Expiry Details</Text>
           <View className="flex flex-row">
             <TextInput className="w-[30px] h-[30px] border-2 rounded-lg pl-1" />
