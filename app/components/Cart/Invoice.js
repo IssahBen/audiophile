@@ -40,7 +40,7 @@ export default function Invoice() {
     setNumberOfItems(itemCounts.filter((count) => count > 0).length);
   }, [numberOfMark1, numberOfMark2, numberOfxx59, numberOfZx7, numberOfZx9, numberOfYx1, vat]);
   function Purchase() {
-    navigation.navigate("Checkedout");
+    navigation.navigate("Alt");
   }
   function formatNumber(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

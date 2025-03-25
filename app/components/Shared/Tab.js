@@ -16,6 +16,7 @@ import Vyx1 from '../Productyx1/Vyx1';
 import MobileCart from '../Cart/Cart';
 import Checkout from '../Cart/Checkout';
 import CheckedOut from '../Cart/CheckedOut';
+import Alt from '../Cart/CheckedOutalt';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -112,10 +113,7 @@ function CartStack(){
     <Stack.Navigator>
        <Stack.Screen name="CartStack"  component={MobileCart}  options= {{ headerShown: false }}/>
       <Stack.Screen name="Checkout" component={Checkout} options={{ headerShown: false }}/>
-      <Stack.Screen name="Checkedout" component={CheckedOut} options={{ headerShown: false }}/>
-      <Stack.Screen name="Homereturn" component={Home} options= {{ headerShown: false }}/>
-     
-
+      <Stack.Screen name="Alt" component={Alt} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
