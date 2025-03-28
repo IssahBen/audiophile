@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, ScrollView,Image } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useData } from "../Context/DataContext";
 const cmk1 = require("../../../assets/Cart/cmk1.jpg");
@@ -31,7 +31,14 @@ export default function CheckedOut() {
   } = useData();
 
   useEffect(() => {
-    const list = [numberOfMark1, numberOfMark2, numberOfYx1, numberOfZx7, numberOfZx9, numberOfxx59];
+    const list = [
+      numberOfMark1,
+      numberOfMark2,
+      numberOfYx1,
+      numberOfZx7,
+      numberOfZx9,
+      numberOfxx59,
+    ];
     const total =
       numberOfMark2 * 2999 +
       numberOfMark1 * 1750 +
@@ -39,14 +46,22 @@ export default function CheckedOut() {
       numberOfYx1 * 599 +
       numberOfZx7 * 3500 +
       numberOfZx9 * 4500;
-    
+
     setSum(total);
     setVat(total * 0.13016);
     setGrandTotal(total + vat + shipping);
 
-    let items = list.filter(item => item !== 0).length;
+    let items = list.filter((item) => item !== 0).length;
     setNumberOfItems(items);
-  }, [numberOfMark1, numberOfMark2, numberOfYx1, numberOfZx7, numberOfZx9, numberOfxx59, vat]);
+  }, [
+    numberOfMark1,
+    numberOfMark2,
+    numberOfYx1,
+    numberOfZx7,
+    numberOfZx9,
+    numberOfxx59,
+    vat,
+  ]);
 
   function Home() {
     setNumberOfMark1(0);
@@ -59,14 +74,16 @@ export default function CheckedOut() {
   }
   function formatNumber(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-const formattedtotal =formatNumber(grandtotal)
+  }
+  const formattedtotal = formatNumber(grandtotal);
   return (
     <ScrollView className="w-full h-full flex flex-col   px-5 py-5">
       <View className="flex w-full justify-between">
         <View className="flex flex-col">
           <Text className="text-black manropebh4 font-bold">THANK YOU</Text>
-          <Text className="text-black manropebh4 font-bold">FOR YOUR ORDER</Text>
+          <Text className="text-black manropebh4 font-bold">
+            FOR YOUR ORDER
+          </Text>
           <Text className="text-ash mt-5">
             You will receive an email confirmation shortly
           </Text>
@@ -75,17 +92,21 @@ const formattedtotal =formatNumber(grandtotal)
 
       <View className="flex flex-col rounded-xl bg-tintwhite">
         <View className="flex flex-row  flex-wrap px-2 py-2 gap-y-2">
-          {numberOfMark1 !== 0 && <Mark1 mark1s={numberOfMark1} src={cmk1}/>}
-          {numberOfMark2 !== 0 && <Mark2 mark2s={numberOfMark2} src={cmk2}/>}
-          {numberOfxx59 !== 0 && <Xx59 xx59s={numberOfxx59}  src={cx59}/>}
-          {numberOfZx7 !== 0 && <Zx7 zx7s={numberOfZx7}  src={czx7}/>}
-          {numberOfZx9 !== 0 && <Zx9 zx9s={numberOfZx9}  src={czx9}/>}
-          {numberOfYx1 !== 0 && <Yx1 yx1s={numberOfYx1} src={cyx1}/>}
+          {numberOfMark1 !== 0 && <Mark1 mark1s={numberOfMark1} src={cmk1} />}
+          {numberOfMark2 !== 0 && <Mark2 mark2s={numberOfMark2} src={cmk2} />}
+          {numberOfxx59 !== 0 && <Xx59 xx59s={numberOfxx59} src={cx59} />}
+          {numberOfZx7 !== 0 && <Zx7 zx7s={numberOfZx7} src={czx7} />}
+          {numberOfZx9 !== 0 && <Zx9 zx9s={numberOfZx9} src={czx9} />}
+          {numberOfYx1 !== 0 && <Yx1 yx1s={numberOfYx1} src={cyx1} />}
         </View>
 
         <View className="flex justify-between items-center px-5 py-5  bg-black">
-          <Text className="font-bold text-tintwhite  text-lg manropereg">GRAND TOTAL</Text>
-          <Text className="font-bold text-tintwhite manropereg mt-2">${formattedtotal}</Text>
+          <Text className="font-bold text-tintwhite  text-lg manropereg">
+            GRAND TOTAL
+          </Text>
+          <Text className="font-bold text-tintwhite manropereg mt-2">
+            ${formattedtotal}
+          </Text>
         </View>
       </View>
 
@@ -99,7 +120,7 @@ const formattedtotal =formatNumber(grandtotal)
   );
 }
 
-function Mark2({ mark2s,src }) {
+function Mark2({ mark2s, src }) {
   return (
     <View className="flex flex-row w-full justify-between items-center">
       <View className="flex flex-row space-x-2 items-center">
@@ -116,7 +137,7 @@ function Mark2({ mark2s,src }) {
   );
 }
 
-function Mark1({ mark1s,src }) {
+function Mark1({ mark1s, src }) {
   return (
     <View className="flex flex-row w-full justify-between items-center">
       <View className="flex flex-row space-x-2 items-center">
@@ -133,7 +154,7 @@ function Mark1({ mark1s,src }) {
   );
 }
 
-function Xx59({ xx59s,src }) {
+function Xx59({ xx59s, src }) {
   return (
     <View className="flex  flex-row w-full justify-between items-center">
       <View className="flex flex-row space-x-2 items-center">
@@ -150,11 +171,11 @@ function Xx59({ xx59s,src }) {
   );
 }
 
-function Zx7({ zx7s,src }) {
+function Zx7({ zx7s, src }) {
   return (
     <View className="flex  flex-row w-full justify-between items-center">
       <View className="flex flex-row space-x-2 items-center">
-        <Image source={src} className="w-[64px] h-[64px] cartzx7 bg-cover"/>
+        <Image source={src} className="w-[64px] h-[64px] cartzx7 bg-cover" />
         <View className="flex flex-col space-y-2">
           <Text className="manropemed font-bold text-black">ZX7</Text>
           <Text className="font-semi-bold text-ash">$3,500</Text>
@@ -167,11 +188,11 @@ function Zx7({ zx7s,src }) {
   );
 }
 
-function Zx9({ zx9s,src }) {
+function Zx9({ zx9s, src }) {
   return (
     <View className="flex flex-row  w-full justify-between items-center">
       <View className="flex flex-row space-x-2 items-center">
-        <Image source={src} className="w-[64px] h-[64px] cartzx9 bg-cover"/>
+        <Image source={src} className="w-[64px] h-[64px] cartzx9 bg-cover" />
         <View className="flex flex-col space-y-2">
           <Text className="manropemed font-bold text-black">ZX9</Text>
           <Text className="font-semi-bold text-ash">$4,500</Text>
@@ -184,11 +205,11 @@ function Zx9({ zx9s,src }) {
   );
 }
 
-function Yx1({ yx1s,src }) {
+function Yx1({ yx1s, src }) {
   return (
     <View className="flex flex-row  w-full justify-between items-center">
       <View className="flex flex-row space-x-2 items-center">
-        <Image source={src} className="w-[64px] h-[64px] cartyx1 bg-cover"/>
+        <Image source={src} className="w-[64px] h-[64px] cartyx1 bg-cover" />
         <View className="flex flex-col space-y-2">
           <Text className="manropemed font-bold text-black">YX1</Text>
           <Text className="font-semi-bold text-ash">$4,500</Text>

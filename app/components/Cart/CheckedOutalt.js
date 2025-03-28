@@ -1,19 +1,26 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import Svg, { Path, Circle } from 'react-native-svg';
-import { useData } from '../Context/DataContext';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import Svg, { Path, Circle } from "react-native-svg";
+import { useData } from "../Context/DataContext";
+import { useNavigation } from "@react-navigation/native";
 export default function Alt() {
-    const {setNumberOfMark1,setNumberOfMark2,setNumberOfYx1,setNumberOfZx7,setNumberOfZx9,setNumberOfxx59} = useData()
-    const navigation =useNavigation()
-    function Home() {
-        setNumberOfMark1(0);
-        setNumberOfMark2(0);
-        setNumberOfYx1(0);
-        setNumberOfZx7(0);
-        setNumberOfZx9(0);
-        setNumberOfxx59(0);
-        navigation.navigate("Home");
-      }
+  const {
+    setNumberOfMark1,
+    setNumberOfMark2,
+    setNumberOfYx1,
+    setNumberOfZx7,
+    setNumberOfZx9,
+    setNumberOfxx59,
+  } = useData();
+  const navigation = useNavigation();
+  function Home() {
+    setNumberOfMark1(0);
+    setNumberOfMark2(0);
+    setNumberOfYx1(0);
+    setNumberOfZx7(0);
+    setNumberOfZx9(0);
+    setNumberOfxx59(0);
+    navigation.navigate("Home");
+  }
   return (
     <ScrollView className="flex-1 bg-gray-50">
       <View className="flex-1 p-4 justify-center">
@@ -43,7 +50,9 @@ export default function Alt() {
           {/* Thank You Message */}
           <View className="items-center space-y-2">
             <Text className="text-3xl font-bold text-gray-900">Thank You!</Text>
-            <Text className="text-base text-gray-600">Your order has been successfully placed.</Text>
+            <Text className="text-base text-gray-600">
+              Your order has been successfully placed.
+            </Text>
           </View>
 
           {/* Order Details */}
@@ -66,8 +75,12 @@ export default function Alt() {
                 />
               </Svg>
               <View>
-                <Text className="text-sm font-medium text-gray-900">Order #12345</Text>
-                <Text className="text-sm text-gray-500">Estimated delivery: 3-5 business days</Text>
+                <Text className="text-sm font-medium text-gray-900">
+                  Order #12345
+                </Text>
+                <Text className="text-sm text-gray-500">
+                  Estimated delivery: 3-5 business days
+                </Text>
               </View>
             </View>
 
@@ -102,14 +115,16 @@ export default function Alt() {
               />
             </Svg>
             <Text className="text-blue-700 text-center">
-              A confirmation email with order details has been sent to your email
+              A confirmation email with order details has been sent to your
+              email
             </Text>
           </View>
 
           {/* Return Home Button */}
-          <TouchableOpacity 
+          <TouchableOpacity
             className="w-full bg-gray-100 py-3 px-4 rounded-lg flex-row items-center justify-center space-x-2"
-            activeOpacity={0.7}  onPress={Home}
+            activeOpacity={0.7}
+            onPress={Home}
           >
             <Svg width={16} height={16} viewBox="0 0 24 24" fill="none">
               <Path
@@ -127,13 +142,15 @@ export default function Alt() {
                 strokeLinejoin="round"
               />
             </Svg>
-            <Text className="text-gray-700 font-medium ml-2">Return to Home</Text>
+            <Text className="text-gray-700 font-medium ml-2">
+              Return to Home
+            </Text>
           </TouchableOpacity>
 
           {/* Contact Support */}
           <View className="items-center">
             <Text className="text-sm text-gray-500">
-              Need help?{' '}
+              Need help?{" "}
               <Text className="text-blue-600 font-medium">Contact Support</Text>
             </Text>
           </View>

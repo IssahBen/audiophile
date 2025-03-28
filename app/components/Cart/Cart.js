@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, TextInput, ScrollView, Image } from "react-native";
 import { useData } from "../Context/DataContext";
 import { useNavigation } from "@react-navigation/native";
+import { useStripe } from "@stripe/stripe-react-native";
 const cmk1 = require("../../../assets/Cart/cmk1.jpg");
 const cmk2 = require("../../../assets/Cart/cmk2.jpg");
 const cx59 = require("../../../assets/Cart/cx59.jpg");
@@ -12,6 +13,7 @@ export default function MobileCart() {
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [sum, setSum] = useState(0);
   const navigation = useNavigation();
+ 
   const {
     numberOfMark1,
     setNumberOfMark1,
@@ -38,6 +40,7 @@ export default function MobileCart() {
       numberOfZx9 * 4500;
     setSum(total);
     setNumberOfItems(itemCounts.filter((count) => count > 0).length);
+    
   }, [numberOfMark1, numberOfMark2, numberOfYx1, numberOfZx7, numberOfZx9, numberOfxx59]);
 
   function removeAll() {
@@ -49,7 +52,8 @@ export default function MobileCart() {
     setNumberOfxx59(0);
   }
 
-  function checkout() {
+
+  function Checkout() {
     navigation.navigate("Checkout");
   }
   function formatNumber(number) {
@@ -79,7 +83,7 @@ let formattedNumber = formatNumber(sum)
         <Text className="font-bold text-black">${formattedNumber}</Text>
       </View>
 
-      <TouchableOpacity onPress={checkout} className="bg-brown py-3 mt-4 rounded-lg">
+      <TouchableOpacity onPress={Checkout} className="bg-brown py-3 mt-4 rounded-lg">
         <Text className="text-white text-center font-bold">CHECKOUT</Text>
       </TouchableOpacity>
     </ScrollView>

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-
+import { StripeProvider } from '@stripe/stripe-react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { verifyInstallation } from 'nativewind';
@@ -10,11 +10,13 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   verifyInstallation();
   return( 
-    <DataProvider>
+    <StripeProvider>
+      <DataProvider>
           <NavigationContainer>
             <MyTabs/>
           </NavigationContainer>
-    </DataProvider>)
+    </DataProvider>
+    </StripeProvider>)
 }
 
 

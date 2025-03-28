@@ -1,21 +1,16 @@
-
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-
-
 import MobileCheckout from "./MobileCheckout";
 import Mobilefooter from "../Home/MobileFooter";
+import { useStripe } from "@stripe/stripe-react-native";
 
-
-
-
-export default function Checkout()  {
+export default function Checkout() {
   const navigation = useNavigation();
+
   return (
     <ScrollView className="  relative w-screen h-screen overflow-y-auto flex flex-col">
       <View className="w-full  bg-white h-full">
-       
         <TouchableOpacity
           onPress={() => {
             navigation.goBack();
@@ -26,8 +21,7 @@ export default function Checkout()  {
         </TouchableOpacity>
         <View id="body" className="w-full h-full">
           <View className="w-full  flex flex-col px-5 bg-white space-y-8">
-            <MobileCheckout/>
-          
+            <MobileCheckout />
           </View>
           <View className="w-full h-[654px] mt-10 bg-red-700 ">
             <Mobilefooter />
@@ -37,5 +31,3 @@ export default function Checkout()  {
     </ScrollView>
   );
 }
-
-
