@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import Icon from "react-native-vector-icons/Ionicons";
 import MobileCheckout from "./MobileCheckout";
 import Mobilefooter from "../Home/MobileFooter";
 import { useStripe } from "@stripe/stripe-react-native";
@@ -17,7 +17,7 @@ export default function Checkout() {
           }}
           className="mt-5  text-ash manropemed pl-2 font-bold pb-5 "
         >
-          <Text className=" font-bold">Go Back</Text>
+          <Icon name="arrow-back" size={30} color="black" />
         </TouchableOpacity>
         <View id="body" className="w-full h-full">
           <View className="w-full  flex flex-col px-5 bg-white space-y-8">

@@ -116,10 +116,11 @@ export default function Invoice() {
     setLoading(false);
   };
   return (
-    <ScrollView className="w-full h-full flex  gap-5 px-5 py-5">
-      <View className="flex w-full justify-between">
-        <Text className="text-black font-bold text-lg">Summary</Text>
+    <ScrollView className="w-full h-full flex gap-6 px-6 py-6 bg-white">
+      <View className="w-full mb-4">
+        <Text className="text-black font-semibold text-xl">Summary</Text>
       </View>
+
       <CartItem
         label="XX99 MK I"
         price={1750}
@@ -137,28 +138,28 @@ export default function Invoice() {
       <CartItem label="ZX9" price={4500} count={numberOfZx9} src={czx9} />
       <CartItem label="YX1" price={599} count={numberOfYx1} src={cyx1} />
 
-      <View className="flex justify-between flex-row mb-2">
+      <View className="flex justify-between flex-row mb-3">
         <Text className="font-medium text-gray-600">TOTAL</Text>
-        <Text className="font-bold text-black">$ {formattedSum}</Text>
+        <Text className="font-semibold text-black">$ {formattedSum}</Text>
       </View>
-      <View className="flex justify-between flex-row mb-2">
+      <View className="flex justify-between flex-row mb-3">
         <Text className="font-medium text-gray-600">SHIPPING</Text>
-        <Text className="font-bold text-black">$ {shipping}</Text>
+        <Text className="font-semibold text-black">$ {shipping}</Text>
       </View>
-      <View className="flex justify-between flex-row mb-2">
+      <View className="flex justify-between flex-row mb-3">
         <Text className="font-medium text-gray-600">TAX</Text>
-        <Text className="font-bold text-black">$ {formattedVat}</Text>
+        <Text className="font-semibold text-black">$ {formattedVat}</Text>
       </View>
-      <View className="flex justify-between flex-row mb-2">
+      <View className="flex justify-between flex-row mb-4">
         <Text className="font-medium text-gray-600">GRAND TOTAL</Text>
-        <Text className="font-bold text-black">$ {formattedTotal}</Text>
+        <Text className="font-semibold text-black">$ {formattedTotal}</Text>
       </View>
 
       <TouchableOpacity
         onPress={handleCheckout}
-        className="bg-brown py-3 mt-4 rounded-lg"
+        className="bg-brown py-3 rounded-lg mt-5"
       >
-        <Text className="text-white text-center font-bold">PURCHASE</Text>
+        <Text className="text-white text-center font-semibold">PURCHASE</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -169,7 +170,7 @@ function CartItem({ label, price, count, src }) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   const formattedNumber = formatNumber(price);
-  if (count === 0) return null;
+
   return (
     <View className="flex flex-row justify-between items-center py-2">
       <Image source={src} className="w-16 h-16 bg-gray-200" />
