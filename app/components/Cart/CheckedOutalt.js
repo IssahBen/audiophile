@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import Svg, { Path, Circle } from "react-native-svg";
 import { useData } from "../Context/DataContext";
 import { useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
 export default function Alt() {
   const {
     setNumberOfMark1,

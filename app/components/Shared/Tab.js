@@ -199,7 +199,7 @@ function CartStack() {
       />
       <Stack.Screen
         name="Checkout"
-        component={Checkout}
+        component={StripeCheckout}
         options={{ headerShown: false }}
       />
       <Stack.Screen

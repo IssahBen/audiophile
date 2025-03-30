@@ -9,7 +9,22 @@ const cx59 = require("../../../assets/Cart/cx59.jpg");
 const cyx1 = require("../../../assets/Cart/cyx1.jpg");
 const czx7 = require("../../../assets/Cart/czx7.jpg");
 const czx9 = require("../../../assets/Cart/czx9.jpg");
-export default function Invoice() {
+export default function Invoice(
+  name,
+  number,
+  email,
+  setName,
+  setNumber,
+  setEmail,
+  address,
+  city,
+  postalCode,
+  country,
+  setPostalCode,
+  setCity,
+  setCountry,
+  setAddress
+) {
   const navigation = useNavigation();
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const [loading, setLoading] = useState(false);
@@ -57,6 +72,7 @@ export default function Invoice() {
     numberOfYx1,
     vat,
   ]);
+
   function Purchase() {
     navigation.navigate("Alt");
   }
@@ -67,13 +83,13 @@ export default function Invoice() {
   const formattedVat = formatNumber(vat.toFixed(2));
   const formattedTotal = formatNumber(grandTotal.toFixed(2));
   const API_URL =
-    "https://67ba-99-230-98-234.ngrok-free.app/api/v1/payment-sheet";
+    "https://0e44-99-230-98-234.ngrok-free.app/api/v1/payment-sheet";
   const fetchPaymentIntent = async () => {
     try {
       const response = await fetch(`${API_URL}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: grandTotal }), // Amount in cents
+        body: JSON.stringify({ amount: grandTotal }),
       });
 
       const { paymentIntent, ephemeralKey, customer } = await response.json();
@@ -83,6 +99,45 @@ export default function Invoice() {
       console.error("Error fetching payment intent:", error);
       return null;
     }
+  };
+  const sendOrder = async () => {
+    const formProps = {
+      name: "name",
+      number: number,
+      email: email,
+      address: address,
+      city: city,
+      postalCode: postalCode,
+      country: country,
+      total: sum,
+    };
+    try {
+      const response = await fetch(
+        "https://0e44-99-230-98-234.ngrok-free.app/api/v1/order",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formProps),
+        }
+      );
+
+      if (response.ok) {
+        console.log("success");
+        return "success";
+      }
+    } catch (error) {
+      return "error";
+    }
+  };
+
+  let reset = function () {
+    setAddress("");
+    setCity("");
+    setCountry("");
+    setEmail("");
+    setPostalCode("");
+    setCountry("");
+    setName("");
   };
 
   const handleCheckout = async () => {
@@ -108,11 +163,14 @@ export default function Invoice() {
       const { error: paymentError } = await presentPaymentSheet();
       if (paymentError) {
         Alert.alert("Error", paymentError.message);
-      } else {
-        navigation.navigate("Alt");
       }
     }
+    const res = await sendOrder();
 
+    if (res == "success") {
+      navigation.navigate("Alt");
+      reset();
+    }
     setLoading(false);
   };
   return (
@@ -170,6 +228,9 @@ function CartItem({ label, price, count, src }) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   const formattedNumber = formatNumber(price);
+  if (count == 0) {
+    return null;
+  }
 
   return (
     <View className="flex flex-row justify-between items-center py-2">
