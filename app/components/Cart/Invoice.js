@@ -9,7 +9,7 @@ const cx59 = require("../../../assets/Cart/cx59.jpg");
 const cyx1 = require("../../../assets/Cart/cyx1.jpg");
 const czx7 = require("../../../assets/Cart/czx7.jpg");
 const czx9 = require("../../../assets/Cart/czx9.jpg");
-export default function Invoice(
+export default function Invoice({
   name,
   number,
   email,
@@ -23,8 +23,8 @@ export default function Invoice(
   setPostalCode,
   setCity,
   setCountry,
-  setAddress
-) {
+  setAddress,
+}) {
   const navigation = useNavigation();
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const [loading, setLoading] = useState(false);
@@ -83,7 +83,7 @@ export default function Invoice(
   const formattedVat = formatNumber(vat.toFixed(2));
   const formattedTotal = formatNumber(grandTotal.toFixed(2));
   const API_URL =
-    "https://0e44-99-230-98-234.ngrok-free.app/api/v1/payment-sheet";
+    "https://180a-205-189-187-4.ngrok-free.app/api/v1/payment-sheet";
   const fetchPaymentIntent = async () => {
     try {
       const response = await fetch(`${API_URL}`, {
@@ -100,32 +100,74 @@ export default function Invoice(
       return null;
     }
   };
+  function convertToFormData(data) {
+    const formData = new FormData();
+
+    // Helper function to append nested objects
+    const appendToFormData = (obj, prefix = "") => {
+      Object.entries(obj).forEach(([key, value]) => {
+        const formKey = prefix ? `${prefix}[${key}]` : key;
+
+        if (
+          typeof value === "object" &&
+          !Array.isArray(value) &&
+          value !== null
+        ) {
+          // Handle nested objects
+          appendToFormData(value, formKey);
+        } else if (Array.isArray(value)) {
+          // Handle arrays (like order_items_attributes)
+          value.forEach((item, index) => {
+            appendToFormData(item, `${formKey}[${index}]`);
+          });
+        } else {
+          // Handle primitive values
+          formData.append(formKey, value);
+        }
+      });
+    };
+
+    appendToFormData(data);
+    return formData;
+  }
   const sendOrder = async () => {
     const formProps = {
-      name: "name",
-      number: number,
-      email: email,
-      address: address,
-      city: city,
-      postalCode: postalCode,
-      country: country,
-      total: sum,
+      order: {
+        customer_name: name,
+        customer_number: number,
+        customer_email: email,
+        shipping_address_line1: address,
+        city: city,
+        postal_code: postalCode,
+        country: country,
+        total: grandTotal,
+        order_items_attributes: [
+          { product_id: "mk1", quantity: numberOfMark1 },
+          { product_id: "mk2", quantity: numberOfMark2 },
+          { product_id: "x59", quantity: numberOfxx59 },
+          { product_id: "yx1", quantity: numberOfYx1 },
+          { product_id: "zx7", quantity: numberOfZx7 },
+          { product_id: "zx9", quantity: numberOfZx9 },
+        ],
+      },
     };
+    const formData = convertToFormData(formProps);
+    console.log(name);
     try {
       const response = await fetch(
-        "https://0e44-99-230-98-234.ngrok-free.app/api/v1/order",
+        "https://180a-205-189-187-4.ngrok-free.app/api/v1/order",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formProps),
+          body: formData,
         }
       );
 
       if (response.ok) {
-        console.log("success");
+        console.log("succss");
         return "success";
       }
     } catch (error) {
+      console.log(error.message);
       return "error";
     }
   };
@@ -139,7 +181,6 @@ export default function Invoice(
     setCountry("");
     setName("");
   };
-
   const handleCheckout = async () => {
     setLoading(true);
 
@@ -163,14 +204,23 @@ export default function Invoice(
       const { error: paymentError } = await presentPaymentSheet();
       if (paymentError) {
         Alert.alert("Error", paymentError.message);
+      } else {
+        console.log("success");
+        try {
+          const res = await sendOrder();
+          console.log(res);
+          if (res === "success") {
+            navigation.navigate("Alt");
+            reset();
+          } else {
+            console.log("failed");
+          }
+        } catch (error) {
+          console.error("Error in handleOrder:", error);
+        }
       }
     }
-    const res = await sendOrder();
 
-    if (res == "success") {
-      navigation.navigate("Alt");
-      reset();
-    }
     setLoading(false);
   };
   return (

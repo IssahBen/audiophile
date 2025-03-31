@@ -47,9 +47,9 @@ export default function MobileCheckout() {
             setEmail={setEmail}
             address={address}
             city={city}
-            postalCOde={postalCode}
+            postalCode={postalCode}
             country={country}
-            setPostalCOde={setPostalCode}
+            setPostalCode={setPostalCode}
             setCity={setCity}
             setCountry={setCountry}
             setAddress={setAddress}
@@ -129,14 +129,11 @@ function ShippingInfo({
 
 // Reusable Form Input Component
 function FormInput({ label, placeholder = "", val, setter }) {
-  function handleChange(e) {
-    setter(e.target.value);
-  }
   return (
     <View className="flex flex-col w-full space-y-2">
       <Text className="text-black font-semibold text-sm">{label}</Text>
       <TextInput
-        onChange={handleChange}
+        onChangeText={(text) => setter(text)}
         value={val}
         placeholder={placeholder}
         className="w-full h-12 px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
