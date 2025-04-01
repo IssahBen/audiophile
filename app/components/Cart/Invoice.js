@@ -83,7 +83,7 @@ export default function Invoice({
   const formattedVat = formatNumber(vat.toFixed(2));
   const formattedTotal = formatNumber(grandTotal.toFixed(2));
   const API_URL =
-    "https://180a-205-189-187-4.ngrok-free.app/api/v1/payment-sheet";
+    "https://be5c-99-230-98-234.ngrok-free.app/api/v1/payment-sheet";
   const fetchPaymentIntent = async () => {
     try {
       const response = await fetch(`${API_URL}`, {
@@ -142,12 +142,12 @@ export default function Invoice({
         country: country,
         total: grandTotal,
         order_items_attributes: [
-          { product_id: "mk1", quantity: numberOfMark1 },
-          { product_id: "mk2", quantity: numberOfMark2 },
-          { product_id: "x59", quantity: numberOfxx59 },
-          { product_id: "yx1", quantity: numberOfYx1 },
-          { product_id: "zx7", quantity: numberOfZx7 },
-          { product_id: "zx9", quantity: numberOfZx9 },
+          { product_id: "mk1", quantity: numberOfMark1, price: 1750 },
+          { product_id: "mk2", quantity: numberOfMark2, price: 2999 },
+          { product_id: "x59", quantity: numberOfxx59, price: 899 },
+          { product_id: "yx1", quantity: numberOfYx1, price: 599 },
+          { product_id: "zx7", quantity: numberOfZx7, price: 3500 },
+          { product_id: "zx9", quantity: numberOfZx9, price: 4500 },
         ],
       },
     };
@@ -155,7 +155,7 @@ export default function Invoice({
     console.log(name);
     try {
       const response = await fetch(
-        "https://180a-205-189-187-4.ngrok-free.app/api/v1/order",
+        "https://be5c-99-230-98-234.ngrok-free.app/api/v1/order",
         {
           method: "POST",
           body: formData,

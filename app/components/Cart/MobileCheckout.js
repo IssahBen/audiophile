@@ -61,6 +61,9 @@ export default function MobileCheckout() {
 }
 
 function BillingDetails({ name, setName, email, setEmail, number, setNumber }) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const alphaSpaces = /^[A-Za-z\s]+$/;
+  const phoneRegex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
   return (
     <View className="flex flex-col w-full gap-6 px-4 py-6 bg-white shadow-lg rounded-lg">
       <Text className="text-2xl font-semibold text-brown">BILLING DETAILS</Text>
@@ -69,18 +72,21 @@ function BillingDetails({ name, setName, email, setEmail, number, setNumber }) {
         setter={setName}
         label="Name"
         placeholder="John Doe"
+        regex={alphaSpaces}
       />
       <FormInput
         val={number}
         setter={setNumber}
         label="Phone Number"
         placeholder="+(1)431-323-3580"
+        regex={phoneRegex}
       />
       <FormInput
         val={email}
         setter={setEmail}
         label="Email Address"
         placeholder="@gmail.com"
+        regex={emailRegex}
       />
     </View>
   );
@@ -96,6 +102,8 @@ function ShippingInfo({
   country,
   setCountry,
 }) {
+  const alphaSpaces = /^[A-Za-z\s]+$/;
+  const phoneRegex = /^\d{10}$/;
   return (
     <View className="flex flex-col w-full gap-6 px-4 py-6 bg-white shadow-lg rounded-lg">
       <Text className="text-2xl font-semibold text-brown">SHIPPING INFO</Text>
@@ -104,40 +112,57 @@ function ShippingInfo({
         setter={setAddress}
         label="Your Address"
         placeholder="Enter your address"
+        regex={alphaSpaces}
       />
       <FormInput
         val={postalCode}
         setter={setPostalCode}
         label="Zip Code"
         placeholder="Enter your zip code"
+        regex={alphaSpaces}
       />
       <FormInput
         val={city}
         setter={setCity}
         label="City"
         placeholder="Enter your city"
+        regex={alphaSpaces}
       />
       <FormInput
         val={country}
         setter={setCountry}
         label="Country"
         placeholder="Enter your country"
+        regex={alphaSpaces}
       />
     </View>
   );
 }
 
-// Reusable Form Input Component
-function FormInput({ label, placeholder = "", val, setter }) {
+function FormInput({ label, placeholder = "", val, setter, regex }) {
+  const [input, setInput] = useState("");
+  const [isValid, setIsValid] = useState(true);
+
+  // Regular expression for exactly 10-digit numbers
+
+  const handleChange = (text) => {
+    setInput(text);
+    setIsValid(regex.test(text)); // Validate input
+  };
+
   return (
-    <View className="flex flex-col w-full space-y-2">
-      <Text className="text-black font-semibold text-sm">{label}</Text>
+    <View className="p-5">
       <TextInput
-        onChangeText={(text) => setter(text)}
-        value={val}
+        className={`border p-2 rounded text-lg ${
+          isValid ? "border-gray-300" : "border-red-500"
+        }`}
+        value={input}
+        onChangeText={handleChange}
         placeholder={placeholder}
-        className="w-full h-12 px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
       />
+      {!isValid && input.length > 0 && (
+        <Text className="text-red-500 mt-2">error</Text>
+      )}
     </View>
   );
 }
