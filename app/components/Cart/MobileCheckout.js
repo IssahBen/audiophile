@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput } from "react-native";
 import Invoice from "./Invoice";
+import { Publisher_Key } from "@env";
 import { StripeProvider } from "@stripe/stripe-react-native";
 export default function MobileCheckout() {
   const [name, setName] = useState("");
@@ -10,9 +11,6 @@ export default function MobileCheckout() {
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  const [publishableKey, setPublishableKey] = useState(
-    "pk_test_51OqpAvEylVar9lzf6hexwa8JLKt5BEClCWMcYxQ2Fk5HGkzb5KgPirMT5jPgKpJeDqIxWTaXJO9SoeGihvlRKfGv00CBvsPdlT"
-  );
   return (
     <View className="w-full bg-white flex flex-col gap-6 px-6 py-6 mx-auto">
       <View className="w-full max-w-screen-lg h-[1500px] mx-auto bg-white flex flex-col gap-12">
@@ -104,6 +102,7 @@ function ShippingInfo({
 }) {
   const alphaSpaces = /^[A-Za-z\s]+$/;
   const phoneRegex = /^\d{10}$/;
+  const alphanumericRegex = /^[a-zA-Z0-9\s]+$/;
   return (
     <View className="flex flex-col w-full gap-6 px-4 py-6 bg-white shadow-lg rounded-lg">
       <Text className="text-2xl font-semibold text-brown">SHIPPING INFO</Text>
@@ -112,7 +111,7 @@ function ShippingInfo({
         setter={setAddress}
         label="Your Address"
         placeholder="Enter your address"
-        regex={alphaSpaces}
+        regex={alphanumericRegex}
       />
       <FormInput
         val={postalCode}
@@ -140,28 +139,27 @@ function ShippingInfo({
 }
 
 function FormInput({ label, placeholder = "", val, setter, regex }) {
-  const [input, setInput] = useState("");
   const [isValid, setIsValid] = useState(true);
 
-  // Regular expression for exactly 10-digit numbers
-
   const handleChange = (text) => {
-    setInput(text);
-    setIsValid(regex.test(text)); // Validate input
+    const valid = regex ? regex.test(text) : true;
+    setIsValid(valid);
+    setter(text);
   };
 
   return (
     <View className="p-5">
+      {label && <Text className="text-lg mb-1">{label}</Text>}
       <TextInput
         className={`border p-2 rounded text-lg ${
           isValid ? "border-gray-300" : "border-red-500"
         }`}
-        value={input}
+        value={val}
         onChangeText={handleChange}
         placeholder={placeholder}
       />
-      {!isValid && input.length > 0 && (
-        <Text className="text-red-500 mt-2">error</Text>
+      {!isValid && val.length > 0 && (
+        <Text className="text-red-500 mt-2">Invalid input</Text>
       )}
     </View>
   );

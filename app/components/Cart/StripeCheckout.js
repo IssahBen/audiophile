@@ -3,13 +3,10 @@ import MobileCart from "./Cart";
 import { useState } from "react";
 import Invoice from "./Invoice";
 import Checkout from "./Checkout";
+import { Publisher_Key } from "@env";
 export default function StripeCheckout() {
-  const [publishableKey, setPublishableKey] = useState(
-    "pk_test_51OqpAvEylVar9lzf6hexwa8JLKt5BEClCWMcYxQ2Fk5HGkzb5KgPirMT5jPgKpJeDqIxWTaXJO9SoeGihvlRKfGv00CBvsPdlT"
-  );
-
   return (
-    <StripeProvider publishableKey={publishableKey}>
+    <StripeProvider publishableKey={Publisher_Key}>
       <Checkout />
     </StripeProvider>
   );

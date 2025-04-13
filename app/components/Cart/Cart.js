@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, TextInput, ScrollView, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  ScrollView,
+  Image,
+} from "react-native";
 import { useData } from "../Context/DataContext";
 import { useNavigation } from "@react-navigation/native";
 import { useStripe } from "@stripe/stripe-react-native";
@@ -13,7 +20,7 @@ export default function MobileCart() {
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [sum, setSum] = useState(0);
   const navigation = useNavigation();
- 
+
   const {
     numberOfMark1,
     setNumberOfMark1,
@@ -30,7 +37,14 @@ export default function MobileCart() {
   } = useData();
 
   useEffect(() => {
-    const itemCounts = [numberOfMark1, numberOfMark2, numberOfYx1, numberOfZx7, numberOfZx9, numberOfxx59];
+    const itemCounts = [
+      numberOfMark1,
+      numberOfMark2,
+      numberOfYx1,
+      numberOfZx7,
+      numberOfZx9,
+      numberOfxx59,
+    ];
     const total =
       numberOfMark2 * 2999 +
       numberOfMark1 * 1750 +
@@ -40,8 +54,14 @@ export default function MobileCart() {
       numberOfZx9 * 4500;
     setSum(total);
     setNumberOfItems(itemCounts.filter((count) => count > 0).length);
-    
-  }, [numberOfMark1, numberOfMark2, numberOfYx1, numberOfZx7, numberOfZx9, numberOfxx59]);
+  }, [
+    numberOfMark1,
+    numberOfMark2,
+    numberOfYx1,
+    numberOfZx7,
+    numberOfZx9,
+    numberOfxx59,
+  ]);
 
   function removeAll() {
     setNumberOfMark1(0);
@@ -52,16 +72,15 @@ export default function MobileCart() {
     setNumberOfxx59(0);
   }
 
-
   function Checkout() {
-    navigation.navigate("Checkout");
+    if (numberOfItems > 0) navigation.navigate("Checkout");
   }
+
   function formatNumber(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+  }
 
-let formattedNumber = formatNumber(sum)
-
+  let formattedNumber = formatNumber(sum);
 
   return (
     <ScrollView className="w-full h-full flex flex-col  px-10 py-5 ">
@@ -71,30 +90,69 @@ let formattedNumber = formatNumber(sum)
           <Text className="text-gray-500 underline">Remove all</Text>
         </TouchableOpacity>
       </View>
-      <CartItem label="XX99 MK I" price={1750} count={numberOfMark1} setCount={setNumberOfMark1} src={cmk1}/>
-      <CartItem label="XX99 MK II" price={2999} count={numberOfMark2} setCount={setNumberOfMark2} src={cmk2}/>
-      <CartItem label="XX59" price={899} count={numberOfxx59} setCount={setNumberOfxx59}  src={cx59}/>
-      <CartItem label="ZX7" price={3500} count={numberOfZx7} setCount={setNumberOfZx7}  src={czx7}/>
-      <CartItem label="ZX9" price={4500} count={numberOfZx9} setCount={setNumberOfZx9} src={czx9}/>
-      <CartItem label="YX1" price={599} count={numberOfYx1} setCount={setNumberOfYx1} src={cyx1}/>
+      <CartItem
+        label="XX99 MK I"
+        price={1750}
+        count={numberOfMark1}
+        setCount={setNumberOfMark1}
+        src={cmk1}
+      />
+      <CartItem
+        label="XX99 MK II"
+        price={2999}
+        count={numberOfMark2}
+        setCount={setNumberOfMark2}
+        src={cmk2}
+      />
+      <CartItem
+        label="XX59"
+        price={899}
+        count={numberOfxx59}
+        setCount={setNumberOfxx59}
+        src={cx59}
+      />
+      <CartItem
+        label="ZX7"
+        price={3500}
+        count={numberOfZx7}
+        setCount={setNumberOfZx7}
+        src={czx7}
+      />
+      <CartItem
+        label="ZX9"
+        price={4500}
+        count={numberOfZx9}
+        setCount={setNumberOfZx9}
+        src={czx9}
+      />
+      <CartItem
+        label="YX1"
+        price={599}
+        count={numberOfYx1}
+        setCount={setNumberOfYx1}
+        src={cyx1}
+      />
 
       <View className="flex justify-between flex-row mt-4">
         <Text className="text-gray-600">Total</Text>
         <Text className="font-bold text-black">${formattedNumber}</Text>
       </View>
 
-      <TouchableOpacity onPress={Checkout} className="bg-brown py-3 mt-4 rounded-lg">
+      <TouchableOpacity
+        onPress={Checkout}
+        className="bg-brown py-3 mt-4 rounded-lg"
+      >
         <Text className="text-white text-center font-bold">CHECKOUT</Text>
       </TouchableOpacity>
     </ScrollView>
   );
 }
 
-function CartItem({ label, price, count, setCount,src }) {
+function CartItem({ label, price, count, setCount, src }) {
   function formatNumber(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-let formattedNumber = formatNumber(price)
+  }
+  let formattedNumber = formatNumber(price);
   if (count === 0) return null;
   return (
     <View className="flex flex-row justify-between items-center py-2">

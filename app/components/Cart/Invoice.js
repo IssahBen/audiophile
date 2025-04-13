@@ -83,7 +83,7 @@ export default function Invoice({
   const formattedVat = formatNumber(vat.toFixed(2));
   const formattedTotal = formatNumber(grandTotal.toFixed(2));
   const API_URL =
-    "https://be5c-99-230-98-234.ngrok-free.app/api/v1/payment-sheet";
+    "https://ce06-99-230-98-234.ngrok-free.app/api/v1/payment-sheet";
   const fetchPaymentIntent = async () => {
     try {
       const response = await fetch(`${API_URL}`, {
@@ -151,11 +151,12 @@ export default function Invoice({
         ],
       },
     };
+    console.log(formProps);
     const formData = convertToFormData(formProps);
     console.log(name);
     try {
       const response = await fetch(
-        "https://be5c-99-230-98-234.ngrok-free.app/api/v1/order",
+        "https://ce06-99-230-98-234.ngrok-free.app/api/v1/order",
         {
           method: "POST",
           body: formData,
